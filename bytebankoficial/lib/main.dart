@@ -1,3 +1,4 @@
+import 'package:bytebankoficial/http/webclient.dart';
 import 'package:bytebankoficial/screens/contacs_list.dart';
 import 'package:bytebankoficial/screens/contact_form.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'screens/dashboard.dart';
 
 void main() {
   runApp(const bytebankApp());
+  findAll();
 }
 
 class bytebankApp extends StatelessWidget {

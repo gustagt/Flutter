@@ -1,23 +1,29 @@
 import 'package:bytebankoficial/database/app_database.dart';
+import 'package:bytebankoficial/database/dao/contact_dao.dart';
 import 'package:bytebankoficial/models/contacts.dart';
 import 'package:bytebankoficial/screens/contact_form.dart';
 import 'package:flutter/material.dart';
 
-class ContacsList extends StatefulWidget {
+
+class ContactsList extends StatefulWidget {
+  const ContactsList({Key? key}) : super(key: key);
+
   @override
-  State<ContacsList> createState() => _ContacsListState();
+  State<ContactsList> createState() => _ContactsListState();
 }
 
-class _ContacsListState extends State<ContacsList> {
+class _ContactsListState extends State<ContactsList> {
+  final ContactDao _dao = ContactDao();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lista de contatos'),
+        title: Text('Transfer'),
       ),
       body: FutureBuilder<List<Contacts>>(
         initialData: [],
-        future: findAll(),
+        future: _dao.findAll(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -57,7 +63,8 @@ class _ContacsListState extends State<ContacsList> {
         ),
         onPressed: () {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => ContacsForm())).then((value) => setState(() {}));
+              .push(MaterialPageRoute(builder: (context) =>  ContactsForm())).then((value) => setState((){}));
+          setState((){});
         },
       ),
     );

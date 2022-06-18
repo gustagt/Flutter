@@ -1,19 +1,14 @@
-import 'package:bytebankoficial/database/app_database.dart';
 import 'package:flutter/material.dart';
 
+import '../database/dao/contact_dao.dart';
 import '../models/contacts.dart';
 
-class ContacsForm extends StatefulWidget {
-  const ContacsForm({Key? key}) : super(key: key);
 
-  @override
-  State<ContacsForm> createState() => _ContacsFormState();
-}
-
-class _ContacsFormState extends State<ContacsForm> {
+class ContactsForm extends StatelessWidget {
 
   final TextEditingController _controladorNome = TextEditingController();
   final TextEditingController _controladorNumeroConta = TextEditingController();
+  final ContactDao _dao = ContactDao();
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +47,7 @@ class _ContacsFormState extends State<ContacsForm> {
                     final String nome = _controladorNome.text;
                     final int? numeroConta = int.tryParse(_controladorNumeroConta.text);
                     final Contacts contato = Contacts(0,nome, numeroConta);
-                    save(contato).then((id) => Navigator.pop(context));
+                    _dao.save(contato).then((id) => Navigator.pop(context));
                   },
                   child: Text('Criar'),
                 ),
