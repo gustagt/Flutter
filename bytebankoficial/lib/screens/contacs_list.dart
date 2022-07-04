@@ -1,9 +1,8 @@
-import 'package:bytebankoficial/database/app_database.dart';
+import 'package:bytebankoficial/components/carregando.dart';
 import 'package:bytebankoficial/database/dao/contact_dao.dart';
 import 'package:bytebankoficial/models/contacts.dart';
 import 'package:bytebankoficial/screens/contact_form.dart';
 import 'package:flutter/material.dart';
-
 
 class ContactsList extends StatefulWidget {
   const ContactsList({Key? key}) : super(key: key);
@@ -30,16 +29,7 @@ class _ContactsListState extends State<ContactsList> {
               // TODO: Handle this case.
               break;
             case ConnectionState.waiting:
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    CircularProgressIndicator(),
-                    Text('Carregando'),
-                  ],
-                ),
-              );
-              break;
+              return Carregando();
             case ConnectionState.active:
               break;
             case ConnectionState.done:
@@ -63,8 +53,9 @@ class _ContactsListState extends State<ContactsList> {
         ),
         onPressed: () {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) =>  ContactsForm())).then((value) => setState((){}));
-          setState((){});
+              .push(MaterialPageRoute(builder: (context) => ContactsForm()))
+              .then((value) => setState(() {}));
+          setState(() {});
         },
       ),
     );

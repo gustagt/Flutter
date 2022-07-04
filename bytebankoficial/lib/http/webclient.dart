@@ -1,6 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:convert';
+
+import 'package:bytebankoficial/models/contacts.dart';
 import 'package:http/http.dart';
 import 'package:http_interceptor/http_interceptor.dart';
+
+import '../models/transaction.dart';
 
 class LoggingInterceptor implements InterceptorContract {
   @override
@@ -18,10 +22,27 @@ class LoggingInterceptor implements InterceptorContract {
     print(data.body);
     return data;
   }
-
 }
 
-void findAll() async{
-  final Client client = InterceptedClient.build(interceptors: [LoggingInterceptor()]);
-  final Response response = await client.get(Uri.parse('http://192.168.0.10:8080/transactions'));
+Future<List<Transaction>> findAll() async {
+  final Client client =
+      InterceptedClient.build(interceptors: [LoggingInterceptor()]);
+  final Response response =
+      await client.get(Uri.parse('http://192.168.0.10:8080/transactions'));
+  final List<dynamic> decodeJson = jsonDecode(response.body);
+  final List<Transaction> transactions = [];
+
+  for (Map<String, dynamic> trasnsactionJson in decodeJson) {
+    final Map<String, dynamic> contactJson = trasnsactionJson['contact'];
+    final Transaction transaction = Transaction(
+      trasnsactionJson['value'],
+      Contacts(
+        0,
+        contactJson['name'],
+        contactJson['accountNumber'],
+      ),
+    );
+    transactions.add(transaction);
+  }
+  return transactions;
 }

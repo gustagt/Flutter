@@ -9,7 +9,7 @@ import 'screens/dashboard.dart';
 
 void main() {
   runApp(const bytebankApp());
-  findAll();
+  findAll().then((transactions) => print('lista $transactions'));
 }
 
 class bytebankApp extends StatelessWidget {
