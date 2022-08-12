@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Carregando extends StatelessWidget {
-  const Carregando({this.message = 'Carregando'});
+   const Carregando({super.key, this.message = 'Carregando'});
 
   final String message;
 
@@ -11,7 +11,7 @@ class Carregando extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CircularProgressIndicator(),
+          const CircularProgressIndicator(),
           Text(message),
         ],
       ),

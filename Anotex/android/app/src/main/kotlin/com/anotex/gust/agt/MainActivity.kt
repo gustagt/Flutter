@@ -1,4 +1,4 @@
-package com.esoft.anotex
+package com.anotex.gust.agt
 
 import io.flutter.embedding.android.FlutterActivity
 

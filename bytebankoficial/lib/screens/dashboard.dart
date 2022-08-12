@@ -9,7 +9,7 @@ class Dashbord extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard'),
+        title: const Text('Dashboard'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -19,7 +19,7 @@ class Dashbord extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Image.asset('images/bytebanklogo.png'),
           ),
-          Container(
+          SizedBox(
             height: 130,
             child: ListView(
               scrollDirection: Axis.horizontal,
@@ -45,7 +45,7 @@ class Dashbord extends StatelessWidget {
 
 void _showTransfer(BuildContext context) {
   Navigator.of(context)
-      .push(MaterialPageRoute(builder: (context) => ContactsList()));
+      .push(MaterialPageRoute(builder: (context) => const ContactsList()));
 }
 
 void _showTransactionsList(BuildContext context) {
@@ -55,12 +55,9 @@ void _showTransactionsList(BuildContext context) {
 
 class _FeatureItem extends StatelessWidget {
   const _FeatureItem(
-      {Key? key,
-      required this.icon,
-      required this.name,
-      @required this.onClick})
+      {required this.icon, required this.name, @required this.onClick})
       : assert(icon != null),
-  assert(onClick != null);
+        assert(onClick != null);
 
   final IconData? icon;
   final String name;
@@ -76,7 +73,7 @@ class _FeatureItem extends StatelessWidget {
           onTap: () {
             onClick!();
           },
-          child: Container(
+          child: SizedBox(
             width: 150,
             child: Padding(
               padding: const EdgeInsets.all(8.0),

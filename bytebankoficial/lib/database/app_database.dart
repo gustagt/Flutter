@@ -1,4 +1,3 @@
-import 'package:bytebankoficial/models/contacts.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 

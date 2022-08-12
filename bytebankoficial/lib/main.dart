@@ -1,19 +1,13 @@
-import 'package:bytebankoficial/http/webclient.dart';
-import 'package:bytebankoficial/screens/contacs_list.dart';
-import 'package:bytebankoficial/screens/contact_form.dart';
 import 'package:flutter/material.dart';
 
-import 'database/app_database.dart';
-import 'models/contacts.dart';
 import 'screens/dashboard.dart';
 
 void main() {
-  runApp(const bytebankApp());
-  findAll().then((transactions) => print('lista $transactions'));
+  runApp(const ByteBankApp());
 }
 
-class bytebankApp extends StatelessWidget {
-  const bytebankApp({Key? key}) : super(key: key);
+class ByteBankApp extends StatelessWidget {
+  const ByteBankApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -26,7 +20,7 @@ class bytebankApp extends StatelessWidget {
             buttonColor: Colors.blueAccent[700],
             textTheme: ButtonTextTheme.primary,
           )),
-      home: Dashbord(),
+      home: const Dashbord(),
     );
   }
 }

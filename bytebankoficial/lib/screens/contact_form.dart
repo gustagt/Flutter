@@ -10,11 +10,13 @@ class ContactsForm extends StatelessWidget {
   final TextEditingController _controladorNumeroConta = TextEditingController();
   final ContactDao _dao = ContactDao();
 
+  ContactsForm({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Adicionar Contato'),
+        title: const Text('Adicionar Contato'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -22,19 +24,19 @@ class ContactsForm extends StatelessWidget {
           children: [
             TextField(
               controller: _controladorNome,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Nome Completo',
               ),
-              style: TextStyle(fontSize: 24.0),
+              style: const TextStyle(fontSize: 24.0),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: TextField(
                 controller: _controladorNumeroConta,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Numero da conta',
                 ),
-                style: TextStyle(fontSize: 24.0),
+                style: const TextStyle(fontSize: 24.0),
                 keyboardType: TextInputType.number,
               ),
             ),
@@ -49,7 +51,7 @@ class ContactsForm extends StatelessWidget {
                     final Contacts contato = Contacts(0,nome, numeroConta);
                     _dao.save(contato).then((id) => Navigator.pop(context));
                   },
-                  child: Text('Criar'),
+                  child: const Text('Criar'),
                 ),
               ),
             )
